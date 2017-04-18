@@ -1,11 +1,11 @@
-  defaults: &defaults
-    host: localhost:9200
+defaults: &defaults
+  host: localhost:9200
 
-  development:
-    <<: *defaults
+development:
+  <<: *defaults
 
-  test:
-    <<: *defaults
+test:
+  <<: *defaults
 
-  production:
-    <<: *defaults
+production:
+  <<: *defaults
