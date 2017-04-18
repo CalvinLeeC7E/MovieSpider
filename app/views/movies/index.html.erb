@@ -1,1 +1,5 @@
-<%= @movies.length %>
+<%= table_list @movies, except: ['id'], custom_attr: {
+    img_cover: lambda { |value| image_tag value, width: 100 },
+    pre_img: lambda { |value| image_tag value, width: 100 },
+} %>
+<%= paginate @movies %>
