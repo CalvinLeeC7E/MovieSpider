@@ -1,6 +1,7 @@
-bind 'unix:///tmp/doctor_helper.sock'
+# bind 'unix:///tmp/doctor_helper.sock'
+bind 'tcp://0.0.0.0:8082'
 threads 8, 32
-workers 4
+workers 2
 preload_app!
 worker_timeout 30
 daemonize
