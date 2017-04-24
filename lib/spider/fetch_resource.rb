@@ -42,10 +42,14 @@ module Spider
     def fetch_movies_detail(movies)
       movies.each do |item|
         imgs = Spider::DOMParser.movie_detail_parser(fetch(item.resource_addr)).map { |item| item[:src] }
-        item.img_cover = imgs[0]
-        item.pre_img = imgs[1]
+        item.img_cover = imgs[0] rescue nil
+        item.pre_img = imgs[1] rescue nil
         item.to_store
       end
+    end
+
+    def fetch_douban_search
+
     end
   end
 end

@@ -1,4 +1,4 @@
-bind 'tcp://0.0.0.0:7788'
+bind 'tcp://0.0.0.0:8082'
 threads 8, 32
 workers 2
 preload_app!

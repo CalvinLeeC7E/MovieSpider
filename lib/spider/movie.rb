@@ -23,17 +23,20 @@ module Spider
     end
 
     def to_json_data
+      order_level = self.resource_addr.match(/.*\/([0-9]*).html/)[1]
       {
           year: self.year, title: self.title, des: self.des,
           resolution: self.resolution, language: self.language,
           img_cover: self.img_cover, pre_img: self.pre_img,
-          resource_addr: self.resource_addr
+          resource_addr: self.resource_addr, movie_type: 'movie',
+          order_level: order_level
       }
     end
 
     def to_store
       begin
-        MovieStore.create(self.to_json_data)
+        movie_store_obj = self.to_json_data
+        MovieStore.create(movie_store_obj) unless MovieStore.find_by_order_level movie_store_obj[:order_level]
       rescue
       end
     end

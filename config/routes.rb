@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root 'movies#index'
-  resources :movies do
+  # match 'movies/:action', to: 'movies#:action', via: :all
+  resources :movies
 
-  end
+
+  match 'api/:api_version/*api_name', to: 'api#call_api', via: :all
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
