@@ -9,15 +9,15 @@ start)
     echo '--start [OK]'
     ;;
 stop)
-    pumactl -p $PUMA_PID stop
+    pumactl -p $PUMA_PID -S ./tmp/pids/puma.state stop
     echo '--stop [OK]'
     ;;
 restart)
-    pumactl -p $PUMA_PID restart
+    pumactl -p $PUMA_PID -S ./tmp/pids/puma.state restart
     echo '--restart [OK]'
     ;;
 upgrade)
-    pumactl -p $PUMA_PID phased-restart
+    pumactl -p $PUMA_PID -S ./tmp/pids/puma.state phased-restart
     echo '--upgrade [OK]'
     ;;
 esac
