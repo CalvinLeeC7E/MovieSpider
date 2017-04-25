@@ -1,9 +1,9 @@
 module Spider
   class DouBanMovie
     def fetch_douban_ratings
-      MovieStore.where(dou_ban_update_time: nil).find_each(batch_size: 500) do |record|
+      MovieStore.where(dou_ban_update_time: nil).find_each(batch_size: 50) do |record|
         movie_rating = douban_movie_api record.title
-        sleep 3
+        sleep 24
         next unless movie_rating
         douban_movie = DouBanMovieRating.find_or_create_by(movie_store_id: record.id)
         update_data = douban_to_json_data movie_rating
@@ -55,8 +55,9 @@ module Spider
 
     def douban_movie_api(title)
       res = HTTParty.get('https://api.douban.com/v2/movie/search', query: {q: title})
+      titles = title.split('/')
       return nil if res.code != 200
-      res['subjects'].select(&lambda { |item| item['title'] == title }).fetch(0, nil) rescue nil
+      res['subjects'].select(&lambda { |item| titles.include? item['title'] }).fetch(0, nil) rescue nil
     end
 
     def douban_to_json_data(douban)

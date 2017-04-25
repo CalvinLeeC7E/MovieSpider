@@ -9,6 +9,5 @@ namespace :spider do
   desc 'load movie rating from douban'
   task :update_douban => [:environment] do
     Spider::DouBanMovie.new().fetch_douban_ratings()
-    # Rails.logger.ap Spider::DouBanMovie.new().douban_movie_page('爱乐之城')
   end
 end
