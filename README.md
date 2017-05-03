@@ -38,6 +38,10 @@ nginx 1.13.0
 $ docker pull hub.c.163.com/library/nginx:1.13.0
 ```
 
+前端截图
+-------
+![MovieSpider](http://7xisw0.com1.z0.glb.clouddn.com/github_screenshot_moviespider.png_small) 
+
 声明
 -------
 此项目仅用于学习和练习，所有内容不提供商业化，不提供下载途径，最后请支持正版电影。
