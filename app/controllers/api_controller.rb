@@ -28,6 +28,5 @@ class ApiController < ApiApplicationController
   end
 
   api_post :movie do
-    1234
   end
 end

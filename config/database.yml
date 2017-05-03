@@ -14,11 +14,12 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: superman
+  password: <%= ENV['DEV_MOVIESPIDER_DATABASE_PASSWORD'] %>
   port: 3306
 
 development:
   <<: *default
+  host: 192.168.95.50
   database: MovieSpider
 
 # Warning: The database defined as "test" will be erased and
